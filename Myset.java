@@ -2,7 +2,7 @@ interface MysetInterface{
 	public Boolean IsEmpty();
 	public Boolean IsMember(Object o);
 	public void Insert(Object o);
-	public void Delete(Object o) throws Exception;
+	public void Delete(Object o);
 	public Myset Union(Myset a);
 	public Myset Intersection(Myset a);
 }
@@ -84,13 +84,13 @@ public class Myset implements MysetInterface{
 	MyLinkedList myset;
 
 	Myset(){
-		this.myset = new MyLinkedList ();
+		myset = new MyLinkedList ();
 	}
 	public Boolean IsEmpty(){
-		return this.myset.isEmpty();
+		return myset.isEmpty();
 	}
 	public Boolean IsMember(Object o){
-		MyLinkedList.Node itr= this.myset.head;
+		MyLinkedList.Node itr= myset.head;
 		while(itr!=null){
 			//System.out.println(itr.getData());
 			if(itr.getData() == o){
@@ -102,35 +102,39 @@ public class Myset implements MysetInterface{
 	}
 	public void Insert(Object o){
 		if(IsMember(o) == false){
-			this.myset.add(o);
+			myset.add(o);
 		}
 	}
-	public void Delete(Object o) throws Exception{
-		if(IsMember(o) == true){
-			if(this.myset.head!=null && this.myset.head.getData() == o){
-				this.myset.remove();
+	public void Delete(Object o){
+		try{
+			if(IsMember(o) == true){
+				if(myset.head!=null && myset.head.getData() == o){
+					myset.remove();
+				}
+				else{
+					MyLinkedList.Node prev = myset.head;
+					MyLinkedList.Node itr = myset.head.getNext();
+
+					while(itr!=null){
+						if(itr.getData() == o){
+							prev.next = itr.next;
+						}
+						prev = itr;
+						itr = itr.getNext();
+					}				
+				}
 			}
 			else{
-				MyLinkedList.Node prev = this.myset.head;
-				MyLinkedList.Node itr = this.myset.head.getNext();
-
-				while(itr!=null){
-					if(itr.getData() == o){
-						prev.next = itr.next;
-					}
-					prev = itr;
-					itr = itr.getNext();
-				}				
+				throw new Exception();
 			}
 		}
-		else
-        {
-            throw new Exception();
-        }
+		catch(Exception e){
+			System.out.println("The element "+o+" was not found in the set");
+		}
 	}
 	public Myset Union(Myset a){
 		Myset answer = new Myset();
-		MyLinkedList.Node itr = this.myset.head;
+		MyLinkedList.Node itr = myset.head;
 		while(itr!=null){
 			answer.Insert(itr.getData());
 			itr= itr.getNext();
@@ -144,7 +148,7 @@ public class Myset implements MysetInterface{
 	}
 	public Myset Intersection(Myset a){
 		Myset answer = new Myset();
-		MyLinkedList.Node itr = this.myset.head;
+		MyLinkedList.Node itr = myset.head;
 		while( itr != null){
 			if(a.IsMember(itr.getData()) == true){
 				answer.Insert(itr.getData());
@@ -155,6 +159,6 @@ public class Myset implements MysetInterface{
 	}
 	public String toString()
     {
-        return this.myset.toString();
+        return myset.toString();
     }
 }	
