@@ -59,27 +59,22 @@ class MyLinkedList {
 		return returnNode;
 	}
 
-	public String toString()
-    {
-        String str= "";
-        String temp = "";
+	public String toString(){
+        String linkedListString= "";
+        String dataString = "";
         Node itr = head;
-        while(itr != null)
-        {
-            temp = itr.data.toString();
-            if(!temp.equals(""))
-            {
-                str = str+" "+temp;
+        while(itr != null){
+            dataString = itr.data.toString();
+            if(dataString.equals("") == false){
+                linkedListString = linkedListString+" "+dataString;
             }
             itr = itr.next;
         }
-        if(str.equals(""))
-        {
-            return str;
+        if(linkedListString.equals("") == true){
+            return linkedListString;
         }
-        else
-        {
-            return str.substring(2);
+        else{
+            return linkedListString.substring(1);
         }
     }
 }
@@ -162,4 +157,4 @@ public class Myset implements MysetInterface{
     {
         return this.myset.toString();
     }
-}
+}	
