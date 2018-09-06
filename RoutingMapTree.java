@@ -1,3 +1,12 @@
+interface RoutingMapTree{
+	public Boolean containsNode(Exchange node);
+	public void switchOn(MobilePhone mobile, Exchange node);
+	public void switchOff(MobilePhone mobile);
+	public void performAction(String actionMessage);
+}
+
+
+
 public class RoutingMapTree{
 	Exchange root;
 	RoutingMapTree(){
@@ -8,9 +17,16 @@ public class RoutingMapTree{
 			return true;
 		}
 		int n = root.numChildren();
+		RoutingMapTree subT = root.subtree(i+1);
 		for(int i=0;i<n;i++){
-			if()
+			if(subT.containsNode(node) == true){
+				return true;
+			}
 		}
+		return false;
 	}
+    public void switchOn(MobilePhone mobile, Exchange node)
+
+
 
 }
