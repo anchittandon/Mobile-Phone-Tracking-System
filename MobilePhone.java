@@ -1,6 +1,6 @@
 interface MobilePhone{
-	 MobilePhone(Int number);
-	 public Int number();
+	 MobilePhone(Integer number);
+	 public Integer number();
 	 public Boolean status();
 	 public void switchOn();
 	 public void switchOff();
@@ -8,13 +8,13 @@ interface MobilePhone{
 }
 
 public class MobilePhone{
-	Int id;
+	Integer id;
 	Boolean phoneStatusOn;
 	Exchange baseStation;
-	MobilePhone(Int number){
+	MobilePhone(Integer number){
 		this.id = number;
 	}
-	public Int number(){
+	public Integer number(){
 		return id;
 	}
 	public Boolean status(){
