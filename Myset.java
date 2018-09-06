@@ -2,7 +2,7 @@ interface MysetInterface{
 	public Boolean IsEmpty();
 	public Boolean IsMember(Object o);
 	public void Insert(Object o);
-	public void Delete(Object o);
+	public void Delete(Object o) throws Exception;
 	public Myset Union(Myset a);
 	public Myset Intersection(Myset a);
 }
@@ -105,31 +105,26 @@ public class Myset implements MysetInterface{
 			myset.add(o);
 		}
 	}
-	public void Delete(Object o){
-		try{
-			if(IsMember(o) == true){
-				if(myset.head!=null && myset.head.getData() == o){
-					myset.remove();
-				}
-				else{
-					MyLinkedList.Node prev = myset.head;
-					MyLinkedList.Node itr = myset.head.getNext();
-
-					while(itr!=null){
-						if(itr.getData() == o){
-							prev.next = itr.next;
-						}
-						prev = itr;
-						itr = itr.getNext();
-					}				
-				}
+	public void Delete(Object o) throws Exception{
+		if(IsMember(o) == true){
+			if(myset.head!=null && myset.head.getData() == o){
+				myset.remove();
 			}
 			else{
-				throw new Exception();
+				MyLinkedList.Node prev = myset.head;
+				MyLinkedList.Node itr = myset.head.getNext();
+
+				while(itr!=null){
+					if(itr.getData() == o){
+						prev.next = itr.next;
+					}
+					prev = itr;
+					itr = itr.getNext();
+				}				
 			}
 		}
-		catch(Exception e){
-			System.out.println("The element "+o+" was not found in the set");
+		else{
+			throw new Exception();
 		}
 	}
 	public Myset Union(Myset a){
