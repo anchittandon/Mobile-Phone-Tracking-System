@@ -1,5 +1,4 @@
-interface MobilePhone{
-	 MobilePhone(Integer number);
+interface MobilePhoneInterface{
 	 public Integer number();
 	 public Boolean status();
 	 public void switchOn();
@@ -11,8 +10,9 @@ public class MobilePhone{
 	Integer id;
 	Boolean phoneStatusOn;
 	Exchange baseStation;
-	MobilePhone(Integer number){
-		this.id = number;
+	MobilePhone(int number){
+		id = number;
+		phoneStatusOn = false;
 	}
 	public Integer number(){
 		return id;
@@ -44,11 +44,21 @@ public class MobilePhone{
 	}
 
     public String toString(){
-        if(phoneStatus){
-            return phoneStatus.toString();
+        if(phoneStatusOn == true){
+            return String.valueOf(id);
         }
         else{
             return "";
         }
+    }
+    public boolean equals(MobilePhone o) { 
+        if (o == this) { 
+            return true; 
+        } 
+
+        if (!(o instanceof MobilePhone)) { 
+            return false; 
+        }  
+        return o.number() == id; 
     }
 }
