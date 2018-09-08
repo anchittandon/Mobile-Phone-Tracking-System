@@ -1,5 +1,4 @@
-interface Exchange{
-	Exchange(Integer number);
+interface ExchangeInterface{
 	public Exchange parent();
 	public Exchange numChildren();
 	public Exchange child(int i);
@@ -14,7 +13,7 @@ public class Exchange{
 	ExchangeList children;
 	MobilePhoneSet mobileSet;
 
-	Exchange(Integer number){
+	Exchange(int number){
 		id = number;
 		children = new ExchangeList();
 		mobileSet = new MobilePhoneSet();
@@ -24,7 +23,7 @@ public class Exchange{
 		return id;
 	}
 
-	public Integer setUniqueId(Integer i){
+	public void setUniqueId(int i){
 		id = i;
 	}
 
@@ -48,21 +47,26 @@ public class Exchange{
 		children.add(node);
 	}
 
-	public Exchange numChildren(){
+	public int numChildren(){
 		return children.getSize();
 	}
 
 	public Exchange child(int i){
-		if(i<numChildren() && i>=0){
+		int num = numChildren();
+		if(i<num && i>=0){
 			ExchangeList.Node itr = children.head;
-			for(int j=0;j<i;j++){
+			for(int j=num-1;j>i;j--){
 				itr = itr.next;
 			}
-			return itr;
+			return (Exchange)itr.data;
 		}
 		else{
 			return null;
 		}
+	}
+
+	public MobilePhone searchPhone(int i){
+		return mobileSet.searchPhone(i);
 	}
 
 	public Boolean isRoot(){
