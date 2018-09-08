@@ -38,6 +38,11 @@ public class MobilePhone{
 			throw new Exception();
 		}
 	}
+
+	public void setBaseStation (Exchange base){
+		baseStation = base;
+	}
+
     public String toString(){
         if(phoneStatus){
             return phoneStatus.toString();
