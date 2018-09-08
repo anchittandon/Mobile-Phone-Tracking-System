@@ -20,6 +20,14 @@ public class Exchange{
 		mobileSet = new MobilePhoneSet();
 	}
 
+	public Integer getUniqueId(){
+		return id;
+	}
+
+	public Integer setUniqueId(Integer i){
+		id = i;
+	}
+
 	public Exchange parent(){
 		return parent;
 	}
@@ -35,9 +43,9 @@ public class Exchange{
 		mobileSet.Delete(mobile);
 	}
 
-	public void addChild(MobilePhone mobile){
-		mobile.setParent(this);
-		children.add(mobile);
+	public void addChild(Exchange node){
+		node.setParent(this);
+		children.add(node);
 	}
 
 	public Exchange numChildren(){
@@ -58,7 +66,7 @@ public class Exchange{
 	}
 
 	public Boolean isRoot(){
-		if(parent == null){
+		if(parent() == null){
 			return true;
 		}
 		return false;
