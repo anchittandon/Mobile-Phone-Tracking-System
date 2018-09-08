@@ -66,7 +66,7 @@ class MyLinkedList {
         while(itr != null){
             dataString = itr.data.toString();
             if(dataString.equals("") == false){
-                linkedListString = linkedListString+" "+dataString;
+                linkedListString = dataString+", "+linkedListString;
             }
             itr = itr.next;
         }
@@ -74,7 +74,7 @@ class MyLinkedList {
             return linkedListString;
         }
         else{
-            return linkedListString.substring(1);
+            return linkedListString.substring(0,linkedListString.length()-2);
         }
     }
 }
@@ -93,7 +93,7 @@ public class Myset implements MysetInterface{
 		MyLinkedList.Node itr= myset.head;
 		while(itr!=null){
 			//System.out.println(itr.getData());
-			if(itr.getData() == o){
+			if(itr.getData().equals(o)){
 				return true;
 			}
 			itr = itr.getNext();
@@ -115,7 +115,7 @@ public class Myset implements MysetInterface{
 				MyLinkedList.Node itr = myset.head.getNext();
 
 				while(itr!=null){
-					if(itr.getData() == o){
+					if(itr.getData().equals(o)){
 						prev.next = itr.next;
 					}
 					prev = itr;
@@ -152,8 +152,7 @@ public class Myset implements MysetInterface{
 		}
 		return answer;
 	}
-	public String toString()
-    {
+	public String toString(){
         return myset.toString();
-    }	
+    }
 }	
