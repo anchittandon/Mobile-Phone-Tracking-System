@@ -2,22 +2,25 @@ public class MobilePhoneSet extends Myset{
 	public MobilePhoneSet(){
 		super();
     }
-     public MobilePhone searchPhone(int id){
+     public MobilePhone searchPhone(int id) throws MobilePhoneNotFoundException{
+        //System.out.println("Inside searchPhone() " + id);
         MyLinkedList.Node itr = myset.head;
-        MobilePhone temp = null;
+        MobilePhone mobile = null;
         if(itr!=null){
-        	temp = (MobilePhone) itr.data;
+        	mobile = (MobilePhone) itr.data;
         }	
-        while(itr!=null && (temp.number() != id)){
+        while(itr!=null && (mobile.number() != id)){
             itr = itr.next;
             if(itr!=null){
-        		temp = (MobilePhone)itr.data;
+        		mobile = (MobilePhone)itr.data;
         	}
         }
-        if(itr == null){
-            return null;
+        if(mobile == null){
+            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifer "+id);
         }
-        return temp;
-    }
-     
+        if(mobile.number() != id){
+            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifer "+id);
+        }
+        return mobile;
+    }    
 }

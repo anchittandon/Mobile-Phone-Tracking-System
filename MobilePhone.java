@@ -30,12 +30,12 @@ public class MobilePhone{
 			phoneStatusOn = false;
 		}
 	}
-	public Exchange location() throws Exception{
+	public Exchange location() throws MobilePhoneSwitchedOffException{
 		if(status() == true){
 			return baseStation;
 		}
 		else {
-			throw new Exception();
+			throw new MobilePhoneSwitchedOffException("MobilePhone "+this.number()+" is switched Off");
 		}
 	}
 

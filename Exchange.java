@@ -51,7 +51,7 @@ public class Exchange{
 		return children.getSize();
 	}
 
-	public Exchange child(int i){
+	public Exchange child(int i) throws ChildNotFoundException{
 		int num = numChildren();
 		if(i<num && i>=0){
 			ExchangeList.Node itr = children.head;
@@ -61,11 +61,11 @@ public class Exchange{
 			return (Exchange)itr.data;
 		}
 		else{
-			return null;
+			throw new ChildNotFoundException("Error - No "+ i +" child of Exchange "+this.getUniqueId());
 		}
 	}
 
-	public MobilePhone searchPhone(int i){
+	public MobilePhone searchPhone(int i) throws MobilePhoneNotFoundException{
 		return mobileSet.searchPhone(i);
 	}
 
@@ -76,12 +76,10 @@ public class Exchange{
 		return false;
 	}
 
-	public RoutingMapTree subtree(int i){
+	public RoutingMapTree subtree(int i) throws ChildNotFoundException{
 		Exchange subtreeAti = child(i);
 		RoutingMapTree rmt = new RoutingMapTree();
-		if(subtreeAti != null){
-			rmt.setRoot(subtreeAti);
-		}
+		rmt.setRoot(subtreeAti);
 		return rmt;
 	}
 
