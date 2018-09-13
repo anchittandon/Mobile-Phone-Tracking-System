@@ -4,6 +4,10 @@ interface RoutingMapTreeInterface{
 	public void switchOff(MobilePhone mobile);
 	public String performAction(String actionMessage);
 	public void setRoot(int i);
+	public Exchange findPhone(MobilePhone m);
+	public Exchange lowestRouter(Exchange a, Exchange b);
+	public ExchangeList routeCall(MobilePhone a, MobilePhone b);
+	public void movePhone(MobilePhone a, Exchange b);
 }
 
 public class RoutingMapTree{
@@ -54,7 +58,7 @@ public class RoutingMapTree{
     		mobile.switchOff();
     	}
     }
-
+    
     public Exchange findExchange(int i) throws ExchangeNotFoundException, ChildNotFoundException	{
     	// Depth First Search
     	int n = root.numChildren();
