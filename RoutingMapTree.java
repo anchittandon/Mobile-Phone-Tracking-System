@@ -22,7 +22,7 @@ public class RoutingMapTree{
 		if(root == node){
 			return true;
 		}
-		int n = setRoott.numChildren();
+		int n = root.numChildren();
 		RoutingMapTree subT;
 		for(int i=0;i<n;i++){
 			subT = root.subtree(i+1);
