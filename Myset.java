@@ -16,9 +16,12 @@ public class Myset implements MysetInterface{
 		myset = new MyLinkedList ();
 	}
 	public Boolean IsEmpty(){
+		//Returns true if the set is empty
 		return myset.isEmpty();
 	}
 	public Boolean IsMember(Object o){
+		//O(n)
+		//Returns true if o is in the set, false otherwise.
 		MyLinkedList.Node itr= myset.head;
 		while(itr!=null){
 			//System.out.println(itr.getData());
@@ -30,11 +33,15 @@ public class Myset implements MysetInterface{
 		return false;
 	}
 	public void Insert(Object o){
+		//O(n)
+		// Inserts o into the set
 		if(IsMember(o) == false){
 			myset.add(o);
 		}
 	}
 	public void Delete(Object o) throws Exception{
+		//O(n)
+		//Deletes o from the set, throws exception if o is not in the set.
 		if(IsMember(o) == true){
 			if(myset.head!=null && myset.head.getData() == o){
 				myset.remove();
@@ -42,7 +49,6 @@ public class Myset implements MysetInterface{
 			else{
 				MyLinkedList.Node prev = myset.head;
 				MyLinkedList.Node itr = myset.head.getNext();
-
 				while(itr!=null){
 					if(itr.getData().equals(o)){
 						prev.next = itr.next;
@@ -57,6 +63,8 @@ public class Myset implements MysetInterface{
 		}
 	}
 	public Myset Union(Myset a){
+		//O(n^2)
+		//Returns a set which is the union of the current set with the set a
 		Myset answer = new Myset();
 		MyLinkedList.Node itr = myset.head;
 		while(itr!=null){
@@ -71,6 +79,8 @@ public class Myset implements MysetInterface{
 		return answer;
 	}
 	public Myset Intersection(Myset a){
+		//O(n^2)
+		//Returns a set which is the intersection of the current set with the set a
 		Myset answer = new Myset();
 		MyLinkedList.Node itr = myset.head;
 		while( itr != null){

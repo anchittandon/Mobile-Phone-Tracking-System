@@ -14,6 +14,8 @@ public class Exchange{
 	MobilePhoneSet mobileSet;
 
 	Exchange(int number){
+		//constructor to create an exchange.
+		//Unique identifier for an exchange is an integer
 		id = number;
 		children = new ExchangeList();
 		mobileSet = new MobilePhoneSet();
@@ -28,6 +30,7 @@ public class Exchange{
 	}
 
 	public Exchange parent(){
+		//Returns the parent of the Exchange in RoutingMapTree
 		return parent;
 	}
 
@@ -48,10 +51,12 @@ public class Exchange{
 	}
 
 	public int numChildren(){
+		// Number of children
 		return children.getSize();
 	}
 
 	public Exchange child(int i) throws ChildNotFoundException{
+		//returns the ith child
 		int num = numChildren();
 		if(i<num && i>=0){
 			ExchangeList.Node itr = children.head;
@@ -66,6 +71,7 @@ public class Exchange{
 	}
 
 	public MobilePhone searchPhone(int i) throws MobilePhoneNotFoundException{
+		// calls MobilePhoneSet operation searchPhone()
 		return mobileSet.searchPhone(i);
 	}
 
@@ -77,6 +83,8 @@ public class Exchange{
 	}
 
 	public RoutingMapTree subtree(int i) throws ChildNotFoundException{
+		//returns the ith subtree
+		//Throws exception if the child i is not found
 		Exchange subtreeAti = child(i);
 		RoutingMapTree rmt = new RoutingMapTree();
 		rmt.setRoot(subtreeAti);
@@ -84,6 +92,7 @@ public class Exchange{
 	}
 
 	public MobilePhoneSet residentSet(){
+		//returns the resident set of mobile phones of the exchange
         return mobileSet;
     }
 }

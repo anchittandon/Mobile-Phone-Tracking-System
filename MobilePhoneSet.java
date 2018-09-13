@@ -1,9 +1,11 @@
 public class MobilePhoneSet extends Myset{
+	// stores MobilePhone objects in a Myset.
 	public MobilePhoneSet(){
 		super();
     }
      public MobilePhone searchPhone(int id) throws MobilePhoneNotFoundException{
-        //System.out.println("Inside searchPhone() " + id);
+        //Returns mobile phone with identifier id.
+        //Throws exception if phone not found
         MyLinkedList.Node itr = myset.head;
         MobilePhone mobile = null;
         if(itr!=null){

@@ -9,17 +9,20 @@ interface RoutingMapTreeInterface{
 public class RoutingMapTree{
 	Exchange root;
 	RoutingMapTree(){
+		// Default root has id 0
 		root = new Exchange(0);
 	}
 	public void setRoot(Exchange node){
+		// Makes node the root of the RoutingMapTree
 		root = node;
 	}
 
 	public Boolean containsNode(Exchange node) throws ChildNotFoundException{
+		// Searches for the node in the RoutingMapTree
 		if(root == node){
 			return true;
 		}
-		int n = root.numChildren();
+		int n = setRoott.numChildren();
 		RoutingMapTree subT;
 		for(int i=0;i<n;i++){
 			subT = root.subtree(i+1);
@@ -30,6 +33,9 @@ public class RoutingMapTree{
 		return false;
 	}
     public void switchOn(MobilePhone mobile, Exchange node){
+    	// This method only works on mobile phones that are 
+    	// currently switched off. It switches the phone a 
+    	// on and registers it with base station b. 
     	if(mobile.status() == false){
     		mobile.switchOn();
     		mobile.setBaseStation(node);
@@ -41,12 +47,16 @@ public class RoutingMapTree{
     	}
     }
     public void switchOff(MobilePhone mobile){
+    	//  This method only works on mobile phones 
+    	// that are currently switched on. It switches the
+    	// phone a off.
     	if(mobile.status() == true){
     		mobile.switchOff();
     	}
     }
 
     public Exchange findExchange(int i) throws ExchangeNotFoundException, ChildNotFoundException	{
+    	// Depth First Search
     	int n = root.numChildren();
     	if(root.getUniqueId() == i){
     		return root;
@@ -65,12 +75,18 @@ public class RoutingMapTree{
     }
 
     public String performAction(String actionMessage){
+
     	String delims = "[ ]+";
 		String[] tokens = actionMessage.split(delims);
 		String answer = "";
 		try{
 			//System.out.print(tokens[0]);
 			if(tokens[0].equals("addExchange") == true){
+				//This should create a new Exchange b, and 
+				//add it to the child list of Exchange a. 
+				//If node a has n children, b should be its
+				//(n + 1)th child. If there is no Exchange 
+				//with identifier a, then throw an Exception.
 				int a = Integer.parseInt(tokens[1]);
 				int b = Integer.parseInt(tokens[2]);
 				Exchange X = findExchange(a); 
@@ -78,6 +94,12 @@ public class RoutingMapTree{
 				X.addChild(Y);
 			}
 			else if(tokens[0].equals("switchOnMobile") == true){
+				// This should switch ON the mobile phone a at
+				// Exchange b. If the mobile did not exist earlier,
+				// create a new mobile phone with identifier a. 
+				// If there is no Exchange with an identifier b,
+				// throw an exception “Error- No exchange with 
+				// identifier b”.
 				int a = Integer.parseInt(tokens[1]);
 				int b = Integer.parseInt(tokens[2]);
 				Exchange containerExchange = findExchange(b);
@@ -88,7 +110,6 @@ public class RoutingMapTree{
 				boolean flag = false;
 				try{
 					mobile = root.searchPhone(a);
-
 					//System.out.println("Mobile phone "+a+" found with id "+mobile.number());
 					/*Exchange base = mobile.location();
 			        while(base != null) {
@@ -108,6 +129,10 @@ public class RoutingMapTree{
 
 			}
 			else if(tokens[0].equals("switchOffMobile") == true){
+				// This should switch OFF the mobile phone a. If
+				//there is no mobile phone with identifier a, 
+				//then throw an Exception “Error- No mobile 
+				//phone with identifier a”.
 				int a = Integer.parseInt(tokens[1]);
 				MobilePhone mobile = root.searchPhone(a);
 				/*if(mobile == null){
@@ -116,6 +141,10 @@ public class RoutingMapTree{
 		        switchOff(mobile);
 			}
 			else if(tokens[0].equals("queryNthChild") == true){
+				//This should print the identifier of the Exchange
+				//which is the (b)th child of Exchange a. If b is 
+				//invalid number throw exception “Error - No b 
+				//child of Exchange a”
 				int a = Integer.parseInt(tokens[1]);
 		        Exchange targetExchange = findExchange(a);
 		        int b = Integer.parseInt(tokens[2]);
@@ -125,6 +154,9 @@ public class RoutingMapTree{
 		        answer += actionMessage+": "+Integer.toString(targetExchange.child(b).getUniqueId());
 			}
 			else if(tokens[0].equals("queryMobilePhoneSet") == true){
+				//This should print the identifier of all the mobile
+				//phones which are part of the resident set of the 
+				//Exchange with identifier a.
 				int a = Integer.parseInt(tokens[1]);
 		        Exchange targetExchange = findExchange(a);
 				//System.out.println(targetExchange.residentSet().IsEmpty());

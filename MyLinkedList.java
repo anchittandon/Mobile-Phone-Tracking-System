@@ -1,4 +1,9 @@
 public class MyLinkedList {
+	/*
+	 *Implements Linked List with Node class
+	 *remove() removes the first element
+	 *add() inserts from the front of the linked list
+	*/
 	class Node {
 		Object data;
 		Node next;
@@ -34,6 +39,7 @@ public class MyLinkedList {
 	}
 
 	public void add(Object data){
+		//Add the element at the head of the Linked List
 		Node nextNode = new Node(data);
 		nextNode.setNext(head);
 		head = nextNode;
@@ -41,6 +47,7 @@ public class MyLinkedList {
 	}
 
 	public Object remove(){
+		// Removes the element at the head of the Linked List
 		if(this.isEmpty()){
 			return null;
 		}
