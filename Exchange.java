@@ -95,4 +95,16 @@ public class Exchange{
 		//returns the resident set of mobile phones of the exchange
         return mobileSet;
     }
+
+    public boolean equals(Exchange o) { 
+    	// Two Exchanges are the same 
+    	// if their identifiers are the same
+        if (o == this) { 
+            return true; 
+        } 
+        if (!(o instanceof Exchange)) { 
+            return false; 
+        }  
+        return o.getUniqueId() == id; 
+    } 
 }
