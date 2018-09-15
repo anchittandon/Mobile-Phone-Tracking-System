@@ -78,6 +78,52 @@ public class RoutingMapTree{
     	return probableExchange;
     }
 
+	public Exchange findPhone(MobilePhone m) throws MobilePhoneNotFoundException,MobilePhoneSwitchedOffException{
+		//Given a mobile phone m it returns the level 0 area exchange with
+		//which it is registered or throws an exception if the phone 
+		//is not found or switched off.
+		MobilePhone mobile = root.residentSet().searchPhone(m.number());
+		return mobile.location();
+	}
+
+	public Exchange lowestRouter(Exchange a, Exchange b){
+		if(a == b){
+			return a;
+		}
+		return lowestRouter(a.parent(),b.parent());
+	} 
+
+	public ExchangeList routeCall(MobilePhone a, MobilePhone b) throws MobilePhoneNotFoundException,MobilePhoneSwitchedOffException{
+		//This method helps initiate a call from phone a to phone b. 
+		//It returns a list of exchanges. 
+		//This list starts from the base station where a is
+		//registered and ends at the base station where b is
+		// registered and represents the shortest route in the 
+		// routing map tree between the two base stations. It goes 
+		// up from the initiating base station all the way to the 
+		// lowestRouter connecting the initiating base station to 
+		// the final base station and then down again. 
+		// The method throws exceptions as appropriate.
+        Exchange A = findPhone(a);
+        Exchange B = findPhone(b);
+        Exchange commonParent = lowestRouter(A,B);
+        ExchangeList path = new ExchangeList();
+        ExchangeList temp = new ExchangeList();
+        path.add(a);
+        while(a!=commonParent){
+        	a=a.parent();
+        	path.add(a);
+        }
+        while(b!=commonParent){
+        	temp.add(b);
+			b=b.parent();
+        }
+        while(temp.IsEmpty()==false){
+        	path.add(temp.remove());
+        }
+        return path;	
+	}
+
     public String performAction(String actionMessage){
 
     	String delims = "[ ]+";
