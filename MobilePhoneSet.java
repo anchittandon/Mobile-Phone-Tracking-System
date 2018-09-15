@@ -21,7 +21,7 @@ public class MobilePhoneSet extends Myset{
             throw new MobilePhoneNotFoundException("Error- No mobile phone with identifier "+id);
         }
         if(mobile.number() != id){
-            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifer "+id);
+            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifier "+id);
         }
         return mobile;
     }    
