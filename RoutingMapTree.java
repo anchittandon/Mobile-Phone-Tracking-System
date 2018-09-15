@@ -229,7 +229,8 @@ public class RoutingMapTree{
 				//by the findPhone(MobilePhone m) method. Here, m represents
 				//the mobile phone whose identifier is a
 				int a = Integer.parseInt(tokens[1]);
-				Exchange targetExchange = findPhone(a);
+				MobilePhone m = root.searchPhone(a);
+				Exchange targetExchange = findPhone(m);
 				String requiredExchangeId = targetExchange.toString();
 				answer += actionMessage+": "+ requiredExchangeId;
 			}
