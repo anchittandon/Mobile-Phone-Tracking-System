@@ -164,8 +164,8 @@ public class RoutingMapTree{
 				// Exchange b. If the mobile did not exist earlier,
 				// create a new mobile phone with identifier a. 
 				// If there is no Exchange with an identifier b,
-				// throw an exception “Error- No exchange with 
-				// identifier b”.
+				// throw an exception "Error- No exchange with 
+				// identifier b".
 				int a = Integer.parseInt(tokens[1]);
 				int b = Integer.parseInt(tokens[2]);
 				Exchange containerExchange = findExchange(b);
@@ -192,8 +192,8 @@ public class RoutingMapTree{
 			else if(tokens[0].equals("switchOffMobile") == true){
 				// This should switch OFF the mobile phone a. If
 				//there is no mobile phone with identifier a, 
-				//then throw an Exception “Error- No mobile 
-				//phone with identifier a”.
+				//then throw an Exception "Error- No mobile 
+				//phone with identifier a".
 				int a = Integer.parseInt(tokens[1]);
 				MobilePhone mobile = root.searchPhone(a);
 				/*if(mobile == null){
@@ -204,8 +204,8 @@ public class RoutingMapTree{
 			else if(tokens[0].equals("queryNthChild") == true){
 				//This should print the identifier of the Exchange
 				//which is the (b)th child of Exchange a. If b is 
-				//invalid number throw exception “Error - No b 
-				//child of Exchange a”
+				//invalid number throw exception "Error - No b 
+				//child of Exchange a"
 				int a = Integer.parseInt(tokens[1]);
 		        Exchange targetExchange = findExchange(a);
 		        int b = Integer.parseInt(tokens[2]);
