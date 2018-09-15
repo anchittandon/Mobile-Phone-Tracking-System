@@ -244,6 +244,14 @@ public class RoutingMapTree{
 				Exchange targetExchange = lowestRouter(e1, e2);
 				String requiredExchangeId = targetExchange.toString();
 				answer += actionMessage+": "+ requiredExchangeId;
+			}
+			else if(tokens[0].equals("queryFindCallPath") == true){
+				int a = Integer.parseInt(tokens[1]);
+				int b = Integer.parseInt(tokens[2]);
+				MobilePhone m1 = root.searchPhone(a);
+                MobilePhone m2 = root.searchPhone(b);
+                String requiredLinkedList = routeCall(a,b).toString();
+                answer += actionMessage+": "+ requiredLinkedList;
 			}			
 		}
 		catch(Exception e){
