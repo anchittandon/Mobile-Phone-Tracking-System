@@ -106,5 +106,10 @@ public class Exchange{
             return false; 
         }  
         return o.getUniqueId() == id; 
+    }
+    public String toString(){
+    	// Returns the id of Exchange
+    	// In the form of a string
+		return String.valueOf(getUniqueId());
     } 
 }
