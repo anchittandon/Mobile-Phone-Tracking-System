@@ -124,7 +124,7 @@ public class RoutingMapTree{
         return path;	
 	}
 
-	public void movePhone(MobilePhone a, Exchange b) throws MobilePhoneSwitchedOffException{
+	public void movePhone(MobilePhone a, Exchange b) throws MobilePhoneSwitchedOffException, MobilePhoneNotFoundException{
 		// This method modifies the routing map by changing the 
 		// location of mobile phone a from its current location 
 		// to the base station b. Note that b must be a base station
@@ -251,7 +251,7 @@ public class RoutingMapTree{
 				int b = Integer.parseInt(tokens[2]);
 				MobilePhone m1 = root.searchPhone(a);
                 MobilePhone m2 = root.searchPhone(b);
-                String requiredLinkedList = routeCall(a,b).toString();
+                String requiredLinkedList = routeCall(m1,m2).toString();
                 answer += actionMessage+": "+ requiredLinkedList;
 			}
 			else if(tokens[0].equals("movePhone") == true){
