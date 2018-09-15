@@ -252,6 +252,13 @@ public class RoutingMapTree{
                 MobilePhone m2 = root.searchPhone(b);
                 String requiredLinkedList = routeCall(a,b).toString();
                 answer += actionMessage+": "+ requiredLinkedList;
+			}
+			else if(tokens[0].equals("movePhone") == true){
+				int a = Integer.parseInt(tokens[1]);
+				int b = Integer.parseInt(tokens[2]);
+				MobilePhone m = root.searchPhone(a);
+				Exchange e = findExchange(b);
+				movePhone( m, e);
 			}			
 		}
 		catch(Exception e){
