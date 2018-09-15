@@ -109,16 +109,16 @@ public class RoutingMapTree{
         Exchange commonParent = lowestRouter(A,B);
         ExchangeList path = new ExchangeList();
         ExchangeList temp = new ExchangeList();
-        path.add(a);
-        while(a!=commonParent){
-        	a=a.parent();
-        	path.add(a);
+        path.add(A);
+        while(A!=commonParent){
+        	A = A.parent();
+        	path.add(A);
         }
-        while(b!=commonParent){
-        	temp.add(b);
-			b=b.parent();
+        while(B!=commonParent){
+        	temp.add(B);
+			B=B.parent();
         }
-        while(temp.IsEmpty()==false){
+        while(temp.isEmpty()==false){
         	path.add(temp.remove());
         }
         return path;	
