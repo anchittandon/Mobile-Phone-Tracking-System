@@ -39,7 +39,7 @@ public class Myset implements MysetInterface{
 			myset.add(o);
 		}
 	}
-	public void Delete(Object o) throws Exception{
+	public void Delete(Object o) throws NotInSetException{
 		//O(n)
 		//Deletes o from the set, throws exception if o is not in the set.
 		if(IsMember(o) == true){
