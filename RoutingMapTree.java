@@ -225,6 +225,9 @@ public class RoutingMapTree{
 		        answer += actionMessage+": "+ requiredSet;		
 			}
 			else if(tokens[0].equals("queryFindPhone") == true){
+				//This should print the identifier of the exchange returned
+				//by the findPhone(MobilePhone m) method. Here, m represents
+				//the mobile phone whose identifier is a
 				int a = Integer.parseInt(tokens[1]);
 				Exchange targetExchange = findPhone(a);
 				String requiredExchangeId = targetExchange.toString();
