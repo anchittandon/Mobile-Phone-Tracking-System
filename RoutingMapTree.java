@@ -124,6 +124,22 @@ public class RoutingMapTree{
         return path;	
 	}
 
+	public void movePhone(MobilePhone a, Exchange b) throws MobilePhoneSwitchedOffException{
+		// This method modifies the routing map by changing the 
+		// location of mobile phone a from its current location 
+		// to the base station b. Note that b must be a base station
+		// and that this operation is only valid for mobile phones
+		// that are currently switched on.
+		Exchange node = a.location();
+		switchOff(a);
+        while(node != null)
+        {
+            node.deleteMobilefromResidentSet(a);
+            node = node.parent();
+        }
+        switchOn(a,b);
+	}
+
     public String performAction(String actionMessage){
 
     	String delims = "[ ]+";
@@ -161,11 +177,6 @@ public class RoutingMapTree{
 				try{
 					mobile = root.searchPhone(a);
 					//System.out.println("Mobile phone "+a+" found with id "+mobile.number());
-					/*Exchange base = mobile.location();
-			        while(base != null) {
-			            base.deleteMobilefromResidentSet(mobile);
-			            base = base.parent();
-			        }*/
 				}
 				catch(Exception e){
 					//System.out.println(e.getMessage());
