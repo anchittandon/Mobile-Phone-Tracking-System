@@ -15,7 +15,7 @@ We will call this hierarchical call routing structure the <em>routing map</em> o
 <ul>
 <li>When a base station <em>b</em> receives a call for a mobile phone with number <em>m</em> it sends this query to <em>C</em>.</li>
 <li>If the root of the routing map is <em>r</em>, we first check if <em>m</em> ∈ <em>S<sub>r</sub></em>. If not then we tell <em>b</em> that the number <em>m</em> is “not reachable.”</li>
-<li>If <em>m</em> ∈ <em>Sr</em> we find that <em>e</em> such that parent(<em>e</em>) = <em>r</em> and <em>m</em> ∈ <em>S<sub>e</sub></em>, i.e. we find the child of <em>r</em> which contains <em>m</em> in its resident set.</li>
+<li>If <em>m</em> ∈ <em>S<sub>r</sub></em> we find that <em>e</em> such that parent(<em>e</em>) = <em>r</em> and <em>m</em> ∈ <em>S<sub>e</sub></em>, i.e. we find the child of <em>r</em> which contains <em>m</em> in its resident set.</li>
 <li>Continue like this till we reach all the way down to a leaf of the routing map. This leaf is a base station <em>b'</em>.</li>
 <li>The central server sends <em>b'</em> to <em>b</em> along with the path in the routing map from <em>b</em> to <em>b'</em>.</li>
 </ul>
