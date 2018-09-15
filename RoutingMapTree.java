@@ -223,6 +223,12 @@ public class RoutingMapTree{
 				//System.out.println(targetExchange.residentSet().IsEmpty());
 		        String requiredSet = targetExchange.residentSet().toString();
 		        answer += actionMessage+": "+ requiredSet;		
+			}
+			else if(tokens[0].equals("queryFindPhone") == true){
+				int a = Integer.parseInt(tokens[1]);
+				Exchange targetExchange = findPhone(a);
+				String requiredExchangeId = targetExchange.toString();
+				answer += actionMessage+": "+ requiredExchangeId;
 			}			
 		}
 		catch(Exception e){
