@@ -41,8 +41,13 @@ public class Exchange{
 		mobileSet.Insert(mobile);
 	}
 
-	public void deleteMobilefromResidentSet(MobilePhone mobile) throws Exception{
-		mobileSet.Delete(mobile);
+	public void deleteMobilefromResidentSet(MobilePhone mobile) throws MobilePhoneNotFoundException{
+		try{
+			mobileSet.Delete(mobile);
+		}
+		catch(NotInSetException e){
+			throw new MobilePhoneNotFoundException("Error- No mobile phone with identifer "+mobile.number());
+		}
 	}
 
 	public void addChild(Exchange node){
