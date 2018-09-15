@@ -232,6 +232,18 @@ public class RoutingMapTree{
 				Exchange targetExchange = findPhone(a);
 				String requiredExchangeId = targetExchange.toString();
 				answer += actionMessage+": "+ requiredExchangeId;
+			}
+			else if(tokens[0].equals("queryLowestRouter") == true){
+				// This should print the identifier of the exchange returned
+				// by the lowestRouter(Exchange e1, Exchange e2) method.
+				// Here, e1 and e2 represent exchanges with identifier a and b respectively.
+				int a = Integer.parseInt(tokens[1]);
+				int b = Integer.parseInt(tokens[2]);			
+				Exchange e1 = findExchange(a);
+				Exchange e2 = findExchange(b);
+				Exchange targetExchange = lowestRouter(e1, e2);
+				String requiredExchangeId = targetExchange.toString();
+				answer += actionMessage+": "+ requiredExchangeId;
 			}			
 		}
 		catch(Exception e){
