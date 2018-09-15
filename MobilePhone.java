@@ -44,7 +44,7 @@ public class MobilePhone{
 			return baseStation;
 		}
 		else {
-			throw new MobilePhoneSwitchedOffException("MobilePhone "+this.number()+" is switched Off");
+			throw new MobilePhoneSwitchedOffException("Error - Mobile phone with identifier "+this.number()+" is currently switched off");
 		}
 	}
 
