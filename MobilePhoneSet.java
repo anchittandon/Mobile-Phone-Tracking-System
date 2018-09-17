@@ -18,10 +18,10 @@ public class MobilePhoneSet extends Myset{
         	}
         }
         if(mobile == null){
-            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifier "+id+" found in the network");
+            throw new MobilePhoneNotFoundException("Error - No mobile phone with identifier "+id+" found in the network");
         }
         if(mobile.number() != id){
-            throw new MobilePhoneNotFoundException("Error- No mobile phone with identifier "+id+" found in the network");
+            throw new MobilePhoneNotFoundException("Error - No mobile phone with identifier "+id+" found in the network");
         }
         return mobile;
     }    
