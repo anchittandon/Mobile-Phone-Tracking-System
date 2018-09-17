@@ -46,7 +46,7 @@ public class Exchange{
 			mobileSet.Delete(mobile);
 		}
 		catch(NotInSetException e){
-			throw new MobilePhoneNotFoundException("Error- No mobile phone with identifer "+mobile.number());
+			throw new MobilePhoneNotFoundException("Error - No mobile phone with identifer "+mobile.number()+"  found in the network");
 		}
 	}
 
