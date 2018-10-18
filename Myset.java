@@ -45,7 +45,7 @@ public class Myset implements MysetInterface{
 
 	// Inserts o into the set
 
-		if(IsMember(o) == false){
+		if(!IsMember(o)){
 			myset.add(o);
 		}
 
@@ -55,7 +55,7 @@ public class Myset implements MysetInterface{
 
 	// Deletes o from the set, throws exception if o is not in the set.
 
-		if(IsMember(o) == true){
+		if(IsMember(o)){
 
 			if(myset.head!=null && myset.head.getData() == o){
 				myset.remove();
@@ -112,7 +112,7 @@ public class Myset implements MysetInterface{
 
 		while( itr != null){
 
-			if(a.IsMember(itr.getData()) == true){
+			if(a.IsMember(itr.getData())){
 				answer.Insert(itr.getData());
 			}
 			itr = itr.getNext();

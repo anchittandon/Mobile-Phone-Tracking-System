@@ -37,14 +37,14 @@ public class MobilePhone{
 	
 	public void switchOn(){
 	// Changes the status to switched on
-		if(phoneStatusOn == false){
+		if(!phoneStatusOn){
 			phoneStatusOn = true;
 		}
 	}
 	
 	public void switchOff(){
 	// Changes the status to switched of
-		if(phoneStatusOn == true){
+		if(phoneStatusOn){
 			phoneStatusOn = false;
 		}
 	}
@@ -55,7 +55,7 @@ public class MobilePhone{
 		the phone is registered if the phone is 
 		switched on and an exception if the phone is off.
 	*/
-		if(status() == true){
+		if(status()){
 			return baseStation;
 		}
 
@@ -76,7 +76,7 @@ public class MobilePhone{
     	Returns the number of Mobile Phone
     	In the form of a string
 	*/
-        if(phoneStatusOn == true){
+        if(phoneStatusOn){
             return String.valueOf(id);
         }
         else{

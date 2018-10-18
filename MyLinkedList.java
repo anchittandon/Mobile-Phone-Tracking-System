@@ -69,7 +69,7 @@ public class MyLinkedList {
 
             dataString = itr.data.toString();
 
-            if(dataString.equals("") == false){
+            if(!dataString.equals("")){
                 linkedListString = dataString+", "+linkedListString;
             }
 
@@ -77,7 +77,7 @@ public class MyLinkedList {
 
         }
 
-        if(linkedListString.equals("") == true){
+        if(linkedListString.equals("")){
             return linkedListString;
         }
 

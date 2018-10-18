@@ -43,7 +43,7 @@ public class RoutingMapTree{
 
 			subT = root.subtree(i+1);
 
-			if(subT.containsNode(node) == true){
+			if(subT.containsNode(node)){
 				return true;
 			}
 
@@ -60,7 +60,7 @@ public class RoutingMapTree{
      	on and registers it with base station b.
     */
     
-    	if(mobile.status() == false){
+    	if(!mobile.status()){
 
     		mobile.switchOn();
     		mobile.setBaseStation(node);
@@ -82,7 +82,7 @@ public class RoutingMapTree{
     	phone a off.
     */
    
-    	if(mobile.status() == true){
+    	if(mobile.status()){
     		mobile.switchOff();
     	}
 
@@ -161,7 +161,7 @@ public class RoutingMapTree{
 			B=B.parent();
         }
 
-        while(temp.isEmpty()==false){
+        while(!temp.isEmpty()){
         	path.add(temp.remove());
         }
 
@@ -199,7 +199,7 @@ public class RoutingMapTree{
 
 		try{
 
-			if(tokens[0].equals("addExchange") == true){
+			if(tokens[0].equals("addExchange")){
 			/*
 				This should create a new Exchange b, and 
 				add it to the child list of Exchange a. 
@@ -215,7 +215,7 @@ public class RoutingMapTree{
 				X.addChild(Y);
 			}
 
-			else if(tokens[0].equals("switchOnMobile") == true){
+			else if(tokens[0].equals("switchOnMobile")){
 			/*	
 				This should switch ON the mobile phone a at
 				Exchange b. If the mobile did not exist earlier,
@@ -239,7 +239,7 @@ public class RoutingMapTree{
 					mobile = new MobilePhone(a);
 				}
 
-				if (mobile.status() == true){
+				if (mobile.status()){
 					throw new MobilePhoneAlreadyOnException("Error- Mobile phone with identifier "+a+" is already on");
 				}
 
@@ -247,7 +247,7 @@ public class RoutingMapTree{
 
 			}
 
-			else if(tokens[0].equals("switchOffMobile") == true){
+			else if(tokens[0].equals("switchOffMobile")){
 			/*	
 				This should switch OFF the mobile phone a. If
 				there is no mobile phone with identifier a, 
@@ -260,7 +260,7 @@ public class RoutingMapTree{
 		        switchOff(mobile);
 			}
 
-			else if(tokens[0].equals("queryNthChild") == true){
+			else if(tokens[0].equals("queryNthChild")){
 			/*
 				This should print the identifier of the Exchange
 				which is the (b)th child of Exchange a. If b is 
@@ -274,7 +274,7 @@ public class RoutingMapTree{
 		        answer += actionMessage+": "+Integer.toString(targetExchange.child(b).getUniqueId());
 			}
 
-			else if(tokens[0].equals("queryMobilePhoneSet") == true){
+			else if(tokens[0].equals("queryMobilePhoneSet")){
 			/*
 				This should print the identifier of all the mobile
 				phones which are part of the resident set of the 
@@ -287,7 +287,7 @@ public class RoutingMapTree{
 		        answer += actionMessage+": "+ requiredSet;		
 			}
 
-			else if(tokens[0].equals("queryFindPhone") == true){
+			else if(tokens[0].equals("queryFindPhone")){
 			/*
 				This should print the identifier of the exchange returned
 				by the findPhone(MobilePhone m) method. Here, m represents
@@ -301,7 +301,7 @@ public class RoutingMapTree{
 				answer += actionMessage+": "+ requiredExchangeId;
 			}
 
-			else if(tokens[0].equals("queryLowestRouter") == true){
+			else if(tokens[0].equals("queryLowestRouter")){
 			/*				
 				This should print the identifier of the exchange returned
 				by the lowestRouter(Exchange e1, Exchange e2) method.
@@ -317,7 +317,7 @@ public class RoutingMapTree{
 				answer += actionMessage+": "+ requiredExchangeId;
 			}
 
-			else if(tokens[0].equals("queryFindCallPath") == true){
+			else if(tokens[0].equals("queryFindCallPath")){
 			/*
 				This should print the list returned by the 
 				routeCall(MobilePhone m1, MobilePhone m2) method. 
@@ -336,7 +336,7 @@ public class RoutingMapTree{
 
 			}
 
-			else if(tokens[0].equals("movePhone") == true){
+			else if(tokens[0].equals("movePhone")){
 			/*
 				This action should set the level 0 area exchange of the
 				mobile phone with identifier a to exchange with identifier b.
