@@ -1,9 +1,11 @@
 public class MyLinkedList {
+	
 	/*
-	 *Implements Linked List with Node class
-	 *remove() removes the first element
-	 *add() inserts from the front of the linked list
+		Implements Linked List with Node class
+	 	- remove() removes the first element
+	 	- add() inserts from the front of the linked list
 	*/
+
 	class Node {
 		Object data;
 		Node next;
@@ -25,7 +27,7 @@ public class MyLinkedList {
 	Node head;
 	int size;
 
-	MyLinkedList(){
+	public MyLinkedList(){
 		head = null;
 		size = 0;
 	}
@@ -39,7 +41,7 @@ public class MyLinkedList {
 	}
 
 	public void add(Object data){
-		//Add the element at the head of the Linked List
+	// Add the element at the head of the Linked List
 		Node nextNode = new Node(data);
 		nextNode.setNext(head);
 		head = nextNode;
@@ -47,7 +49,7 @@ public class MyLinkedList {
 	}
 
 	public Object remove(){
-		// Removes the element at the head of the Linked List
+	// Removes the element at the head of the Linked List
 		if(this.isEmpty()){
 			return null;
 		}
@@ -58,21 +60,31 @@ public class MyLinkedList {
 	}
 
 	public String toString(){
+
         String linkedListString= "";
         String dataString = "";
         Node itr = head;
+
         while(itr != null){
+
             dataString = itr.data.toString();
+
             if(dataString.equals("") == false){
                 linkedListString = dataString+", "+linkedListString;
             }
+
             itr = itr.next;
+
         }
+
         if(linkedListString.equals("") == true){
             return linkedListString;
         }
+
         else{
             return linkedListString.substring(0,linkedListString.length()-2);
         }
+    
     }
+
 }
